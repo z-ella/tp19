@@ -1,0 +1,38 @@
+### Eureka
+GET http://localhost:8761/
+
+### Direct SERVICE-CLIENT
+GET http://localhost:8088/clients
+###
+GET http://localhost:8088/client/1
+
+### Direct SERVICE-VOITURE
+GET http://localhost:8089/voitures
+###
+GET http://localhost:8089/voitures/1
+###
+GET http://localhost:8089/voitures/client/1
+
+### Via Gateway (routes lb://)
+GET http://localhost:8888/clients
+###
+GET http://localhost:8888/client/1
+###
+GET http://localhost:8888/voitures
+
+### Via Gateway (dynamique)
+GET http://localhost:8888/SERVICE-CLIENT/clients
+###
+GET http://localhost:8888/SERVICE-VOITURE/voitures
+
+### Créer une voiture pour le client 1
+POST http://localhost:8089/voitures/1
+Content-Type: application/json
+
+{"marque":"Dacia","matricule":"C 12 3456","model":"Sandero"}
+
+### Modifier une voiture
+PUT http://localhost:8089/voitures/1
+Content-Type: application/json
+
+{"model":"Yaris"}
